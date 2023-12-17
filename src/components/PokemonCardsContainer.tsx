@@ -1,20 +1,23 @@
-import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import {ScrollView, StyleSheet} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import PokemonCard from './PokemonCard';
 
 const PokemonCardsContainer = () => {
-  //   const cardsData = [
-  //     {
-  //       name: 'Bulbasaur',
-  //       hp: 45,
-  //       moves: ['razor-wind', 'swords-dance', 'cut', 'bind', 'vine-whip'],
-  //       weaknesses: ['rock', 'steel'],
-  //     },
-  //   ];
+  const [pokemons, setPokemons] = useState([]);
+  useEffect(() => {
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
+      .then(data => data.json())
+      .then(pokemonData => setPokemons(pokemonData.results));
+  }, []);
   return (
-    <View style={styles.container}>
-      <PokemonCard />
-    </View>
+    <ScrollView style={styles.container}>
+      {pokemons.length > 0 &&
+        pokemons.map((pokemon, index) => {
+          return (
+            <PokemonCard key={index} pokemon={pokemon} pokemonId={index + 1} />
+          );
+        })}
+    </ScrollView>
   );
 };
 
