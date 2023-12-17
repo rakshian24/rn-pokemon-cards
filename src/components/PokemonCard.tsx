@@ -34,7 +34,7 @@ const PokemonCard = ({pokemon, pokemonId}: Props) => {
     <View style={styles.card}>
       <View style={styles.header}>
         <View>
-          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.name}>{`${pokemonId}. ${name}`}</Text>
         </View>
         <View style={styles.headerRightContainer}>
           <View>
