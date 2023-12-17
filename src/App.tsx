@@ -1,16 +1,14 @@
 import React from 'react';
-import {SafeAreaView, ScrollView, StyleSheet} from 'react-native';
+import {SafeAreaView, View, StyleSheet} from 'react-native';
 import {colors} from './constants/colors';
 import PokemonCardsContainer from './components/PokemonCardsContainer';
 
 function App(): React.JSX.Element {
   return (
     <SafeAreaView style={styles.safeAreaViewContainer}>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={styles.appContainer}>
+      <View style={styles.appContainer}>
         <PokemonCardsContainer />
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
